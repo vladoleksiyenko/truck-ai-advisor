@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+        <head>
+                <meta charset="utf-8"/>
+                <title>TruckTech AI Assistant</title>
+                <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+                <link href="css/style.css" rel="stylesheet"/>
+                <script crossorigin="anonymous" src="https://kit.fontawesome.com/a076d05399.js"></script>
+        </head>
+        <body class="bg-light">
+                <div class="container py-5">
+                        <h1 class="text-center"><i class="fas fa-truck"></i> <strong>TruckTech AI Assistant</strong></h1>
+                        <p class="text-center text-muted">Your AI companion for trucking and mechanical questions</p>
+
+                        <div class="text-end dark-mode-toggle">
+                                <button class="btn btn-outline-dark mb-3" id="toggle-theme">
+                                <i class="fas fa-moon"></i> Toggle Dark Mode
+                                </button>
+                        </div>
+
+                        <div class="card my-4 shadow-sm">
+                                <div class="card-body text-center">
+                                        <h5 class="mb-4 fw-bold">Ask me anything about:</h5>
+                                        <div class="d-flex justify-content-center gap-3">
+                                                <div class="category-card bg-primary text-white p-3 rounded">
+                                                        <div class="category-icon">🛠️</div>
+                                                        <i class="fas fa-tools fa-2x"></i><br/><strong>Truck Repairs</strong><br/>
+                                                        <small>Engine, transmission, brake issues</small>
+                                                </div>
+                                                <div class="category-card bg-warning text-dark p-3 rounded">
+                                                        <div class="category-icon">🛑</div>
+                                                        <i class="fas fa-gavel fa-2x"></i><br/><strong>Regulations</strong><br/>
+                                                        <small>DOT rules, HOS, safety requirements</small>
+                                                </div>
+                                                <div class="category-card bg-success text-white p-3 rounded">
+                                                        <div class="category-icon">🔧</div>
+                                                        <i class="fas fa-cogs fa-2x"></i><br/><strong>Maintenance</strong><br/>
+                                                        <small>Preventive care, schedules, tips</small>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                
+                        <div class="my-5" id="pretrip-section">
+                                <h5><i class="fas fa-map-marked-alt"></i> Pre-Trip Inspection Planner</h5>
+                                <p>Select your state to generate a tailored pre-trip inspection checklist.</p>
+                                <div class="row g-3 align-items-end">
+                                        <div class="col-md-6">
+                                                <label for="state-select" class="form-label">Select State</label>
+                                                <select class="form-select" id="state-select">
+                                                        <option value="">-- Choose a State --</option>
+                                                        <option>Alabama</option>
+                                                        <option>Alaska</option>
+                                                        <option>Arizona</option>
+                                                        <option>Arkansas</option>
+                                                        <option>California</option>
+                                                        <option>Colorado</option>
+                                                        <option>Connecticut</option>
+                                                        <option>Delaware</option>
+                                                        <option>Florida</option>
+                                                        <option>Georgia</option>
+                                                        <option>Hawaii</option>
+                                                        <option>Idaho</option>
+                                                        <option>Illinois</option>
+                                                        <option>Indiana</option>
+                                                        <option>Iowa</option>
+                                                        <option>Kansas</option>
+                                                        <option>Kentucky</option>
+                                                        <option>Louisiana</option>
+                                                        <option>Maine</option>
+                                                        <option>Maryland</option>
+                                                        <option>Massachusetts</option>
+                                                        <option>Michigan</option>
+                                                        <option>Minnesota</option>
+                                                        <option>Mississippi</option>
+                                                        <option>Missouri</option>
+                                                        <option>Montana</option>
+                                                        <option>Nebraska</option>
+                                                        <option>Nevada</option>
+                                                        <option>New Hampshire</option>
+                                                        <option>New Jersey</option>
+                                                        <option>New Mexico</option>
+                                                        <option>New York</option>
+                                                        <option>North Carolina</option>
+                                                        <option>North Dakota</option>
+                                                        <option>Ohio</option>
+                                                        <option>Oklahoma</option>
+                                                        <option>Oregon</option>
+                                                        <option>Pennsylvania</option>
+                                                        <option>Rhode Island</option>
+                                                        <option>South Carolina</option>
+                                                        <option>South Dakota</option>
+                                                        <option>Tennessee</option>
+                                                        <option>Texas</option>
+                                                        <option>Utah</option>
+                                                        <option>Vermont</option>
+                                                        <option>Virginia</option>
+                                                        <option>Washington</option>
+                                                        <option>West Virginia</option>
+                                                        <option>Wisconsin</option>
+                                                        <option>Wyoming</option>
+                                                </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                                <button class="btn btn-success w-100" onclick="generatePreTrip()">Generate Pre-Trip Plan</button>
+                                        </div>
+                                </div>
+                                <div class="mt-4">
+                                        <h6>Checklist Result:</h6>
+                                        <div id="pretrip-result" class="p-3 border rounded bg-white shadow-sm" style="min-height: 100px;"></div>
+                                </div>
+                        </div>
+
+                        <div class="card shadow-sm">
+                                <div class="card-body">
+                                        <h5><i class="fas fa-question-circle"></i> What's your question?</h5>
+                                        <textarea class="form-control my-2" id="user-input" placeholder="e.g. My truck’s engine is making a strange noise when I accelerate. What could be causing this?" rows="4"></textarea>
+                                        <small class="text-muted">Be as specific as possible for the best help</small>
+                                        <div class="text-end"><small id="char-count">0/1000</small></div>
+                                                <button class="btn btn-primary w-100 mt-2" onclick="sendMessage()">
+                                                        <i class="fas fa-paper-plane"></i> Ask TruckTech AI
+                                                </button>
+                                                <div class="mt-4 p-3 border rounded bg-white shadow-sm" id="response"></div>
+                                        </div>
+                                </div>
+
+                                <div class="my-5">
+                                        <h5><i class="fas fa-bolt"></i> Quick Start Examples</h5>
+                                        <div class="d-flex flex-wrap gap-3 mt-3">
+                                                <div class="card p-3 shadow-sm quick-example" data-message="My truck’s engine is making a knocking sound when I accelerate. What could be causing this?" style="cursor:pointer;">
+                                                        <strong><i class="fas fa-wrench"></i> Engine Troubleshooting</strong>
+                                                        <p>My truck’s engine is making a knocking sound when I accelerate. What could be causing this?</p>
+                                                </div>
+                                        <div class="card p-3 shadow-sm quick-example" data-message="What are the current hours of service requirements for commercial drivers?" style="cursor:pointer;">
+                                                <strong><i class="fas fa-balance-scale"></i> DOT Regulations</strong>
+                                                <p>What are the current hours of service requirements for commercial drivers?</p>
+                                        </div>
+                                        <div class="card p-3 shadow-sm quick-example" data-message="How often should I check my brake fluid and what signs indicate it needs changing?" style="cursor:pointer;">
+                                                <strong><i class="fas fa-oil-can"></i> Maintenance Tips</strong>
+                                                <p>How often should I check my brake fluid and what signs indicate it needs changing?</p>
+                                        </div>
+                                </div>
+                        </div>
+
+                        <div class="my-5">
+                                <h5><i class="fas fa-lightbulb"></i> Tips for Better Results</h5>
+                                <div class="d-flex flex-wrap gap-3 mt-3">
+                                        <div class="card p-3 shadow-sm">
+                                                <strong>Be Specific</strong>
+                                                <p>Include truck model, year, and exact symptoms you're experiencing.</p>
+                                        </div>
+                                        <div class="card p-3 shadow-sm">
+                                                <strong>Safety First</strong>
+                                                <p>Always prioritize safety and consult professionals for critical repairs.</p>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <script src="js/script.js"></script>
+        </body>
+</html>
