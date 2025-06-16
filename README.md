@@ -1,19 +1,6 @@
 # 🚛 TruckTech AI Advisor
 TruckTech is an AI-powered assistant designed to support truck drivers and logistics professionals with essential tools for daily operations. Built using Node.js, Express, HTML, CSS, JavaScript, and Bootstrap, the application includes a feature-rich front-end and a backend API integrated with OpenAI to deliver smart responses for trucking-related inquiries.
 
-truck-ai-advisor/
-├── public/
-│   ├── index.html              # Main HTML interface
-│   ├── css/style.css           # Custom styling
-│   ├── js/script.js            # Frontend logic and API interaction
-│   └── images/                 # Branding/logo
-├── server.js                   # Express server handling API routes
-├── api/
-│   └── chat.js                 # API route for OpenAI integration
-├── .env                        # Environment variables (API keys, etc.)
-├── package.json                # Project dependencies and scripts
-└── README.md                   # Project documentation
-
 # 🚀 Getting Started
 Prerequisites
 Node.js (v18+ recommended)
