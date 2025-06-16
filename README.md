@@ -65,6 +65,20 @@ No data persistence or user accounts (stateless app).
 
 Pre-trip data is statically fetched (no real-time government API).
 
+# 📊 Project Results & Insights
+
+## What Worked Well
+- The AI assistant accurately answered most common trucking-related questions.
+- The UI was intuitive, and feedback from test users was positive.
+- The pre-trip inspection planner successfully returned state-specific content.
+
+## Limitations
+- Some responses were too generic when questions became very technical.
+- Model struggled when answering model-specific prompts
+
+## Takeaways
+This project shows how AI can assist truck drivers with on-the-road questions, simplifying maintenance planning and DOT compliance. While still early-stage, it lays a foundation for a more robust AI companion for the trucking industry.
+
 # 🔮 Future Improvements
 Add driver profiles for saving preferences or routes.
 
