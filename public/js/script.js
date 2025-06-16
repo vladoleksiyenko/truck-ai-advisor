@@ -25,6 +25,39 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleThemeButton = document.getElementById("toggle-theme");
+  const body = document.body;
+
+  // Check localStorage for theme preference
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme) {
+      body.setAttribute("data-bs-theme", savedTheme);
+      updateButtonText(savedTheme);
+  }
+
+  // Toggle theme on button click
+  toggleThemeButton.addEventListener("click", function () {
+      const currentTheme = body.getAttribute("data-bs-theme");
+      const newTheme = currentTheme === "light" ? "dark" : "light";
+      body.setAttribute("data-bs-theme", newTheme);
+
+      // Save preference in localStorage
+      localStorage.setItem("theme", newTheme);
+
+      // Update button text/icon
+      updateButtonText(newTheme);
+  });
+
+  function updateButtonText(theme) {
+      if (theme === "dark") {
+          toggleThemeButton.innerHTML = '<i class="fas fa-sun"></i> Toggle Light Mode';
+      } else {
+          toggleThemeButton.innerHTML = '<i class="fas fa-moon"></i> Toggle Dark Mode';
+      }
+  }
+});
+
 async function generatePreTrip() {
   const state = document.getElementById("state-select").value;
   const resultBox = document.getElementById("pretrip-result");
