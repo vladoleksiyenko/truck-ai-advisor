@@ -80,5 +80,3 @@ app.post("/api/pretrip", async (req, res) => {
     res.status(500).json({ error: "Failed to generate checklist." });
   }
 });
-
-module.exports = app;
