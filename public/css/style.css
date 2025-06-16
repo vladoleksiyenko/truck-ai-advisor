@@ -28,6 +28,11 @@ body {
   z-index: 1000;
 }
 
+.dark-mode-toggle[data-bs-theme="dark"] {
+  background-color: #343a40;
+  color: #ffffff;
+}
+
 body[data-bs-theme="dark"] {
   background-color: #121212; /* Dark background color */
   color: #ffffff; /* Light text color */
@@ -36,4 +41,29 @@ body[data-bs-theme="dark"] {
 body[data-bs-theme="light"] {
   background-color: #ffffff; /* Light background color */
   color: #000000; /* Dark text color */
+}
+
+body.dark-mode .toggle-light-mode {
+  color: #ffffff;
+}
+
+body.light-mode .toggle-light-mode {
+  color: #000000;
+}
+
+.header-info-main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly
+}
+
+.trucktech-logo {
+  width: 150px;
+  height: auto;
+  margin: 20px;
+}
+
+.main-chat {
+  margin-top: 20px;
 }

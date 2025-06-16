@@ -12,8 +12,16 @@
         </head>
         <body data-bs-theme="light">
                 <div class="container py-5">
-                        <h1 class="text-center"><i class="fas fa-truck"></i> <strong>TruckTech AI Assistant</strong></h1>
-                        <p class="text-center text-muted">Your AI companion for trucking and mechanical questions</p>
+                        
+                        <div class="header-info-main">
+                                <img src="images/trucktech-logo.png" alt="TruckTech Logo" class="img-fluid mb-4 trucktech-logo"/>
+                                <div>
+                                        <h1 class="text-center"><i class="fas fa-truck"></i> <strong>TruckTech AI Assistant</strong></h1>
+                                        <p class="text-center text-muted">Your AI companion for trucking and mechanical questions</p>
+                                </div>
+                                
+                        </div>
+                        
 
                         <div class="text-end dark-mode-toggle">
                                 <button class="btn btn-outline-dark mb-3" id="toggle-theme">
@@ -113,7 +121,7 @@
                                         <div id="pretrip-result" class="p-3 border rounded shadow-sm" style="min-height: 100px;"></div>
                         </div>
 
-                        <div class="card shadow-sm">
+                        <div class="card shadow-sm main-chat">
                                 <div class="card-body">
                                         <h5><i class="fas fa-question-circle"></i> What's your question?</h5>
                                         <textarea class="form-control my-2" id="user-input" placeholder="e.g. My truck’s engine is making a strange noise when I accelerate. What could be causing this?" rows="4"></textarea>
